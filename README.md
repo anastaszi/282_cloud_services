@@ -6,11 +6,11 @@
 [from SQL DB to Dynamo DB](https://aws.amazon.com/dms/?nc=bc&pg=pr)
 
 
-[]Discuss features and architecture
-[]Create AWS resources
-[]Move SQL db to DynamoDB
-[]Discuss API calls
-[]Discuss third-party solution integration (Google maps?, FBbot)
+- [ ] Discuss features and architecture
+- [ ] Create AWS resources
+- [ ] Move SQL db to DynamoDB
+- [ ] Discuss API calls
+- [ ] Discuss third-party solution integration (Google maps?, FBbot)
 
 
 ## Tools
