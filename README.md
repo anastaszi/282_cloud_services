@@ -39,7 +39,7 @@ git commit -m "..."
 git push
 ```
 
-Do pull request in git browser version:)
+Do pull request in github browser version:)
 
 
 
