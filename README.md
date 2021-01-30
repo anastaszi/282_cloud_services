@@ -6,7 +6,7 @@
 [from SQL DB to Dynamo DB](https://aws.amazon.com/dms/?nc=bc&pg=pr)
 
 
-** Main git branch - main ** 
+**Main git branch - main** 
 
 For each feature create new branch (-b stands for that)
 ```
