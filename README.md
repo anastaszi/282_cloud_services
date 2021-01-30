@@ -22,7 +22,7 @@
 
 **Main branch is - main**
 
-For each feature create new branch (-b stands for that)
+For each new feature create a new branch (-b stands for that)
 ```
 git checkout -b my_branch
 ```
