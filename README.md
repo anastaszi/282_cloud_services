@@ -6,7 +6,7 @@
 [from SQL DB to Dynamo DB](https://aws.amazon.com/dms/?nc=bc&pg=pr)
 
 
-## Do the git the right way
+## Do git the right way
 
 **Main branch is - main**
 
