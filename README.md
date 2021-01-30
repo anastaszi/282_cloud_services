@@ -6,6 +6,18 @@
 [from SQL DB to Dynamo DB](https://aws.amazon.com/dms/?nc=bc&pg=pr)
 
 
+[]Discuss features and architecture
+[]Create AWS resources
+[]Move SQL db to DynamoDB
+[]Discuss API calls
+[]Discuss third-party solution integration (Google maps?, FBbot)
+
+
+## Tools
+
+[Figma](https://www.figma.com/) - UX/UI design
+
+
 ## Do git the right way
 
 **Main branch is - main**
