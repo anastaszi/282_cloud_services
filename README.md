@@ -12,6 +12,13 @@
 - [ ] Discuss API calls
 - [ ] Discuss third-party solution integration (Google maps?, FBbot)
 
+## Features
+
+## Plan
+
+## AWS tools
+- SNS (for messaging between users)
+
 
 ## Tools
 
