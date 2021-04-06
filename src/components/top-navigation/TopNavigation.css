@@ -1,0 +1,40 @@
+@import "../../styles/variables.css";
+
+.top-navigation {
+
+}
+
+.navbar-brand {
+  display: contents;
+}
+
+.navbtn {
+  background-color: var(--color-green);
+  font-weight: bold;
+font-size: 18px;
+line-height: 28px;
+letter-spacing: 0.02em;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.navbtn > svg {
+  height: 18px;
+}
+
+.logo-name > h1 {
+  margin-bottom: 0;
+}
+
+.user-profile {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+  color: var(--color-gold);
+  border: 3px solid var(--color-gold);
+}

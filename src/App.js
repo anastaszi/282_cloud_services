@@ -1,24 +1,48 @@
-import logo from './logo.svg';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import { DashboardPage } from './pages/dashboard';
+import { UIPage } from './pages/ui';
+import { ProfilePage } from './pages/profile';
+import { ChatsPage } from './pages/chats';
+import { MessagesPage } from './pages/messages';
+import { TopNavComponent } from './components/top-navigation';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="page-container">
+        <TopNavComponent />
+        <Container fluid="true" >
+                {/* A <Switch> looks through its children <Route>s and
+                  renders the first one that matches the current URL. */}
+              <Switch>
+              <Route path="/ui">
+                <UIPage />
+              </Route>
+                <Route path="/profile">
+                  <ProfilePage />
+                </Route>
+                <Route path="/chats">
+                  <ChatsPage />
+                </Route>
+                <Route path="/messages">
+                  <MessagesPage />
+                </Route>
+                <Route path="/">
+                  <DashboardPage />
+                </Route>
+              </Switch>
+        </Container>
+      </div>
+    </Router>
   );
 }
 
