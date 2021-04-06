@@ -20,7 +20,7 @@ function App() {
     <Router>
       <div className="page-container">
         <TopNavComponent />
-        <Container fluid="true" >
+        <Container fluid="true" className="d-flex h-100 flex-column" >
                 {/* A <Switch> looks through its children <Route>s and
                   renders the first one that matches the current URL. */}
               <Switch>
