@@ -1,0 +1,14 @@
+@import "../../styles/variables.css";
+@import "../../styles/theme.css";
+
+.status-owner svg{
+  fill: var(--color-mustard)
+}
+
+.status-participant svg{
+  fill: var(--color-grass)
+}
+
+.chat-description {
+  font-weight: 700;
+}

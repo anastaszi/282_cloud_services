@@ -1,0 +1,15 @@
+@import "../../styles/variables.css";
+@import "../../styles/theme.css";
+
+.conversation {
+  background: var(--color-white);
+  padding: 0;
+  filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.conversation-header {
+  background-color: var(--color-mustard);
+  
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
