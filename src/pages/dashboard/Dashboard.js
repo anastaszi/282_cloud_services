@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { Hub } from 'aws-amplify';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
@@ -14,12 +15,15 @@ const Dashboard = props => {
 
   useEffect(() => {
     // Check if user logged In and set users initials
-    setUser({name: "Leya", lastName: "Zoya"});
-    setUserInitials("LZ");
+    Hub.listen('oktaAuth', (data) => {
+           const { payload } = data;
+           setUser({name: payload.firstName, lastName: payload.lastName, email: payload.email});
+           setUserInitials(payload.firstName[0] + payload.lastName[0]);
+      })
     setConversations([{user: "Anna Z.", lastMessage: "How are you?", id: 12346}, {user: "Mathew F.", lastMessage: "I like it:)", id: 34235}])
     setChats([{id: 12434, description: "How to make and impact", owner: false, date: Date.now(), time: Date.now()},
-    {id: 12634, description: "How to make and impact", owner: true, date: Date.now(), time: Date.now()},
-    {id: 12324, description: "How to make and impact", owner: false, date: Date.now(), time: Date.now()},
+    {id: 1234, description: "How to make and impact", owner: true, date: Date.now(), time: Date.now()},
+    {id: 12394, description: "How to make and impact", owner: false, date: Date.now(), time: Date.now()},
   ])
   }, []);
   return (
