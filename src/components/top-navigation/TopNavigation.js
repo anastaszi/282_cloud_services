@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react';
 import {
   Link
 } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
+import { useOktaAuth } from '@okta/okta-react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import { ReactComponent as ExitIcon } from '../../assets/door-open.svg';
@@ -10,14 +12,22 @@ import { ReactComponent as ChatIcon } from '../../assets/chat-text.svg';
 import './TopNavigation.css';
 
 const TopNavigation = props => {
-  const [user, setUser] = useState(null);
-  const [userInitials, setUserInitials] = useState("");
+  const history = useHistory();
+  const { oktaAuth, authState } = useOktaAuth();
+
+  const logout = async () => oktaAuth.signOut();
 
   useEffect(() => {
-    // Check if user logged In and set users initials
-    setUser({name: "Leya", lastName: "Zoya"});
-    setUserInitials("LZ")
-  }, []);
+    if (authState.isPending) return null;
+  }, [authState, oktaAuth]);
+
+  const navLinks = authState.isAuthenticated ?
+  <Nav className="ml-auto">
+    <Nav.Link href="/chats" className="navbtn"><MegaPhoneIcon />Lifechats</Nav.Link>
+    <Nav.Link href="/messages" className="navbtn"><ChatIcon />Messages</Nav.Link>
+    <Nav.Link href="/profile" className="navbtn">Profile</Nav.Link>
+    <Nav.Link className="navbtn" onClick={logout}><ExitIcon /></Nav.Link>
+  </Nav> : null ;
 
   return (
     <>
@@ -27,13 +37,7 @@ const TopNavigation = props => {
           <h1>Modular Chatter</h1>
         </div>
       </Navbar.Brand>
-      <Nav className="ml-auto">
-        <Nav.Link href="/chats" className="navbtn"><MegaPhoneIcon />Lifechats</Nav.Link>
-        <Nav.Link href="/messages" className="navbtn"><ChatIcon />Messages</Nav.Link>
-        <Nav.Link href="/profile" className="navbtn">{userInitials} Profile</Nav.Link>
-        <Nav.Link className="navbtn"><ExitIcon /></Nav.Link>
-      </Nav>
-
+      {navLinks}
     </Navbar>
     </>
   );

@@ -1,7 +1,9 @@
 # 282_cloud_services
-282 Cloud Services @ SJSU 
+282 Cloud Services @ SJSU
 
 [Amplify & OKTA](https://aws.amazon.com/blogs/mobile/building-an-application-with-aws-amplify-amazon-cognito-and-an-openid-connect-identity-provider/)
+
+[Okta](https://developer.okta.com/code/react/okta_react_sign-in_widget/)
 
 [from SQL DB to Dynamo DB](https://aws.amazon.com/dms/?nc=bc&pg=pr)
 
@@ -39,7 +41,7 @@ Do the work, commit, push to the new branch
 ```
 git add ...
 git commit -m "..."
-git push 
+git push
 ```
 
 Checkout to main and pull last changes
@@ -61,7 +63,3 @@ git push
 ```
 
 Do pull request in github browser version:)
-
-
-
-
