@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import {API} from 'aws-amplify';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button'
@@ -16,6 +17,15 @@ const UserMessages = props => {
     setUserInitials("LZ")
   }, []);
 
+  const getMessages = () => {
+    console.log("Hello");
+    API.get('messageapi', '/', {}).then(result => {
+     console.log(JSON.parse(result.body));
+    }).catch(err => {
+     console.log(err);
+    })
+  }
+
   return (
     <div className="w-100 h-100">
       <div className="section-header"><ChatIcon /><h3>My Messages</h3></div>
@@ -25,7 +35,7 @@ const UserMessages = props => {
       <div className="section-footer">
         <Row className="mx-0 mb-3">
           <Col sm="auto" className="ml-auto">
-          <Button variant="blue" className="px-4">New Message</Button>
+          <Button variant="blue" className="px-4" onClick={getMessages}>New Message</Button>
           </Col>
         </Row>
       </div>

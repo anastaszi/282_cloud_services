@@ -1,0 +1,31 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-amplify0f52dab8b63d4-staging-24325-authRole",
+      "UnauthRoleArn": "arn:aws:iam::328229711407:role/amplify-amplify0f52dab8b63d4-staging-24325-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::328229711407:role/amplify-amplify0f52dab8b63d4-staging-24325-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-amplify0f52dab8b63d4-staging-24325-deployment",
+      "UnauthRoleName": "amplify-amplify0f52dab8b63d4-staging-24325-unauthRole",
+      "StackName": "amplify-amplify0f52dab8b63d4-staging-24325",
+      "StackId": "arn:aws:cloudformation:us-east-1:328229711407:stack/amplify-amplify0f52dab8b63d4-staging-24325/ad8bc3d0-a3dd-11eb-b7ca-0ee0fb3948c5",
+      "AmplifyAppId": "d19l5z2jndlrkv"
+    },
+    "categories": {
+      "function": {
+        "messagesDbTrigger463fa6c7": {
+          "deploymentBucketName": "amplify-amplify0f52dab8b63d4-staging-24325-deployment",
+          "s3Key": "amplify-builds/messagesDbTrigger463fa6c7-4c73796e4a5764614c55-build.zip"
+        },
+        "conversation282": {
+          "deploymentBucketName": "amplify-amplify0f52dab8b63d4-staging-24325-deployment",
+          "s3Key": "amplify-builds/conversation282-5739535735584e71376e-build.zip"
+        },
+        "messages282": {
+          "deploymentBucketName": "amplify-amplify0f52dab8b63d4-staging-24325-deployment",
+          "s3Key": "amplify-builds/messages282-6959566c6652336d6c39-build.zip"
+        }
+      }
+    }
+  }
+}

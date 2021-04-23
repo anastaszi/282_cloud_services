@@ -7,7 +7,6 @@ import { useOktaAuth } from '@okta/okta-react';
 import { Hub } from 'aws-amplify';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-import { userContext } from '../../services/userContext';
 import { ReactComponent as ExitIcon } from '../../assets/door-open.svg';
 import { ReactComponent as MegaPhoneIcon } from '../../assets/megaphone.svg';
 import { ReactComponent as ChatIcon } from '../../assets/chat-text.svg';

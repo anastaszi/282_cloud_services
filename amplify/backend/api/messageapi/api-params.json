@@ -1,0 +1,54 @@
+{
+    "paths": [
+        {
+            "name": "/messages",
+            "lambdaFunction": "messages282",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/messages"
+        },
+        {
+            "name": "/conversation/{id}",
+            "lambdaFunction": "conversation282",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/conversation/*"
+        }
+    ],
+    "resourceName": "messageapi",
+    "apiName": "messageapi",
+    "functionArns": [
+        {
+            "lambdaFunction": "messages282"
+        },
+        {
+            "lambdaFunction": "conversation282"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-amplify0f52dab8b63d4-staging-24325-authRole",
+        "unAuthRoleName": "amplify-amplify0f52dab8b63d4-staging-24325-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "messages282",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        },
+        {
+            "category": "function",
+            "resourceName": "conversation282",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
