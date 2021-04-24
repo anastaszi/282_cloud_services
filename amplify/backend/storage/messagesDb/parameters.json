@@ -1,7 +1,0 @@
-{
-    "tableName": "messages",
-    "partitionKeyName": "id",
-    "partitionKeyType": "S",
-    "sortKeyName": "conversationId",
-    "sortKeyType": "S"
-}

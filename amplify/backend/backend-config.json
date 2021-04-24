@@ -1,13 +1,13 @@
 {
   "function": {
-    "messagesDbTrigger463fa6c7": {
+    "messageDB282Trigger920fe908": {
       "service": "Lambda",
       "providerPlugin": "awscloudformation",
       "build": true,
       "dependsOn": [
         {
           "category": "storage",
-          "resourceName": "messagesDb",
+          "resourceName": "messageDB282",
           "attributes": [
             "Name",
             "Arn",
@@ -16,67 +16,52 @@
         }
       ]
     },
-    "messages282": {
+    "getAllMessagesByUser": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda",
-      "dependsOn": [
-        {
-          "category": "storage",
-          "resourceName": "messagesDb",
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "attributeEnvMap": {
-            "Name": "TABLE_NAME",
-            "Arn": "TABLE_ARN"
-          }
-        }
-      ]
-    },
-    "conversation282": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": [
-        {
-          "category": "storage",
-          "resourceName": "messagesDb",
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "attributeEnvMap": {
-            "Name": "TABLE_NAME",
-            "Arn": "TABLE_ARN"
-          }
-        }
-      ]
-    }
-  },
-  "storage": {
-    "messagesDb": {
-      "service": "DynamoDB",
-      "providerPlugin": "awscloudformation"
-    }
-  },
-  "api": {
-    "messageapi": {
-      "service": "API Gateway",
-      "providerPlugin": "awscloudformation",
       "dependsOn": [
         {
           "category": "function",
-          "resourceName": "messages282",
+          "resourceName": "oktalayer",
           "attributes": [
-            "Name",
             "Arn"
           ]
         },
         {
           "category": "function",
-          "resourceName": "conversation282",
+          "resourceName": "croslayer",
+          "attributes": [
+            "Arn"
+          ]
+        }
+      ]
+    },
+    "oktalayer": {
+      "providerPlugin": "awscloudformation",
+      "service": "LambdaLayer",
+      "build": true
+    },
+    "croslayer": {
+      "providerPlugin": "awscloudformation",
+      "service": "LambdaLayer",
+      "build": true
+    }
+  },
+  "storage": {
+    "messageDB282": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation"
+    }
+  },
+  "api": {
+    "getMessages": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "getAllMessagesByUser",
           "attributes": [
             "Name",
             "Arn"

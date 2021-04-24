@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@okta/jwt-verifier": "^2.1.0",
     "@okta/okta-auth-js": "^4.8.0",
     "@okta/okta-react": "^5.1.1",
     "@okta/okta-signin-widget": "^5.5.2",
@@ -10,6 +11,7 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "aws-amplify": "^3.3.26",
+    "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "react": "^17.0.2",
     "react-bootstrap": "^1.5.2",
