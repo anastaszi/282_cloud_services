@@ -12,19 +12,11 @@ const UserMessages = props => {
   const [userInitials, setUserInitials] = useState("");
 
   useEffect(() => {
-    // Check if user logged In and set users initials
+    console.log(props)
+    
     setUser({name: "Leya", lastName: "Zoya"});
     setUserInitials("LZ")
   }, []);
-
-  const getMessages = () => {
-    console.log("Hello");
-    API.get('messageapi', '/', {}).then(result => {
-     console.log(JSON.parse(result.body));
-    }).catch(err => {
-     console.log(err);
-    })
-  }
 
   return (
     <div className="w-100 h-100">
@@ -35,7 +27,7 @@ const UserMessages = props => {
       <div className="section-footer">
         <Row className="mx-0 mb-3">
           <Col sm="auto" className="ml-auto">
-          <Button variant="blue" className="px-4" onClick={getMessages}>New Message</Button>
+          <Button variant="blue" className="px-4" onClick={props.getMessages}>New Message</Button>
           </Col>
         </Row>
       </div>

@@ -13,17 +13,49 @@
     },
     "categories": {
       "function": {
-        "messagesDbTrigger463fa6c7": {
+        "messageDB282Trigger920fe908": {
           "deploymentBucketName": "amplify-amplify0f52dab8b63d4-staging-24325-deployment",
-          "s3Key": "amplify-builds/messagesDbTrigger463fa6c7-4c73796e4a5764614c55-build.zip"
+          "s3Key": "amplify-builds/messageDB282Trigger920fe908-327a42733258484f374c-build.zip"
         },
-        "conversation282": {
+        "getAllMessagesByUser": {
           "deploymentBucketName": "amplify-amplify0f52dab8b63d4-staging-24325-deployment",
-          "s3Key": "amplify-builds/conversation282-5739535735584e71376e-build.zip"
+          "s3Key": "amplify-builds/getAllMessagesByUser-6a47474e6e5448493149-build.zip"
         },
-        "messages282": {
+        "oktalayer": {
           "deploymentBucketName": "amplify-amplify0f52dab8b63d4-staging-24325-deployment",
-          "s3Key": "amplify-builds/messages282-6959566c6652336d6c39-build.zip"
+          "s3Key": "amplify-builds/oktalayer-build.zip"
+        },
+        "croslayer": {
+          "deploymentBucketName": "amplify-amplify0f52dab8b63d4-staging-24325-deployment",
+          "s3Key": "amplify-builds/croslayer-build.zip"
+        }
+      }
+    },
+    "nonCFNdata": {
+      "function": {
+        "oktalayer": {
+          "layerVersionMap": {
+            "1": {
+              "permissions": [
+                {
+                  "type": "private"
+                }
+              ],
+              "hash": "vLkdnK913W7pcwmSrQ5GAHG6mxWamM6sA2mw00jCdio="
+            }
+          }
+        },
+        "croslayer": {
+          "layerVersionMap": {
+            "1": {
+              "permissions": [
+                {
+                  "type": "private"
+                }
+              ],
+              "hash": "d88dV3ycHsPGO5pivvnUeOShNTFKyV77KlePLMcl5Jg="
+            }
+          }
         }
       }
     }

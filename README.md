@@ -1,15 +1,15 @@
 # 282_cloud_services
 282 Cloud Services @ SJSU
 
-[Amplify & OKTA](https://aws.amazon.com/blogs/mobile/building-an-application-with-aws-amplify-amazon-cognito-and-an-openid-connect-identity-provider/)
-
 [Okta](https://developer.okta.com/code/react/okta_react_sign-in_widget/)
+[Okta Server-Side JWT verification](https://developer.okta.com/blog/2018/07/10/build-a-basic-crud-app-with-node-and-react)
+[okta/okta-oidc-js](https://github.com/okta/okta-oidc-js/tree/master/packages/jwt-verifier)
 
 [from SQL DB to Dynamo DB](https://aws.amazon.com/dms/?nc=bc&pg=pr)
 
 
-- [ ] Discuss features and architecture
-- [ ] Create AWS resources
++ [ ] Discuss features and architecture
++ [ ] Create AWS resources
 - [ ] Move SQL db to DynamoDB
 - [ ] Discuss API calls
 - [ ] Discuss third-party solution integration (Google maps?, FBbot)

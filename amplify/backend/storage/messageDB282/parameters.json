@@ -1,0 +1,7 @@
+{
+    "tableName": "messageDB282",
+    "partitionKeyName": "uuid",
+    "partitionKeyType": "S",
+    "sortKeyName": "conversationId",
+    "sortKeyType": "S"
+}

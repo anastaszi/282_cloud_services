@@ -4,7 +4,7 @@ import {
 } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
 import { useOktaAuth } from '@okta/okta-react';
-import { Hub } from 'aws-amplify';
+import { Hub, Cache } from 'aws-amplify';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import { ReactComponent as ExitIcon } from '../../assets/door-open.svg';
@@ -20,32 +20,23 @@ const TopNavigation = props => {
 
   const logout = async () => {
     oktaAuth.signOut();
-    Hub.dispatch(
-      'oktaAuth',
-      {
-          event: 'userDataUpdated',
-          lastName: '',
-          firstName: '',
-          email:''
-        });
+    Hub.dispatch('oktaAuth',{event: 'userDataDeleted'});
+    Cache.clear();
   }
 
   useEffect(() => {
     if (authState.isPending) return null;
 
     if (authState.isAuthenticated) {
-
       oktaAuth.token.getUserInfo().then((data) => {
-        setUserInitials(data.given_name[0] + data.family_name[0])
-        Hub.dispatch(
-          'oktaAuth',
-          {
-              event: 'userDataUpdated',
-              lastName: data.family_name,
-              firstName: data.given_name,
-              email: data.email
-            });
-          })}
+        setUserInitials(data.given_name[0] + data.family_name[0]);
+        Cache.setItem('userInitials', data.given_name[0] + data.family_name[0]);
+        Cache.setItem('userLastName', data.family_name);
+        Cache.setItem('userFistName', data.given_name);
+        Cache.setItem('token', authState.accessToken.value);
+        Cache.setItem('email', data.email);
+        Hub.dispatch('oktaAuth',{event: 'userDataFetched'});
+      })}
   }, [authState, oktaAuth]);
 
   const navLinks = authState.isAuthenticated ?
