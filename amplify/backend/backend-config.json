@@ -46,10 +46,47 @@
       "providerPlugin": "awscloudformation",
       "service": "LambdaLayer",
       "build": true
+    },
+    "userLambdaAmplify": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "storage",
+          "resourceName": "userChatter",
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "attributeEnvMap": {
+            "Name": "TABLE_NAME",
+            "Arn": "TABLE_ARN"
+          }
+        },
+        {
+          "category": "function",
+          "resourceName": "oktalayer",
+          "attributes": [
+            "Arn"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "croslayer",
+          "attributes": [
+            "Arn"
+          ]
+        }
+      ]
     }
   },
   "storage": {
     "messageDB282": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation"
+    },
+    "userChatter": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation"
     }
@@ -62,6 +99,20 @@
         {
           "category": "function",
           "resourceName": "getAllMessagesByUser",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ]
+    },
+    "users": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "userLambdaAmplify",
           "attributes": [
             "Name",
             "Arn"

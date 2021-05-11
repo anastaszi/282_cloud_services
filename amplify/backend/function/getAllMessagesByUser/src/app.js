@@ -11,11 +11,10 @@ See the License for the specific language governing permissions and limitations 
 
 
 
-
-var express = require('express')
-var bodyParser = require('body-parser')
-var cors = require('cors')
 var awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
+var bodyParser = require('body-parser')
+var express = require('express')
+var cors = require('cors')
 const OktaJwtVerifier = require('@okta/jwt-verifier');
 
 const oktaJwtVerifier = new OktaJwtVerifier({
@@ -28,6 +27,8 @@ const oktaJwtVerifier = new OktaJwtVerifier({
 var app = express()
 app.use(bodyParser.json());
 app.use(awsServerlessExpressMiddleware.eventContext());
+
+// verify token from Okta
 app.use(cors())
 app.use(function(req, res, next) {
   const authHeader = req.headers.authorization || '';

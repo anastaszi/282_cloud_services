@@ -19,7 +19,7 @@
         },
         "getAllMessagesByUser": {
           "deploymentBucketName": "amplify-amplify0f52dab8b63d4-staging-24325-deployment",
-          "s3Key": "amplify-builds/getAllMessagesByUser-6a47474e6e5448493149-build.zip"
+          "s3Key": "amplify-builds/getAllMessagesByUser-70445859326948464b61-build.zip"
         },
         "oktalayer": {
           "deploymentBucketName": "amplify-amplify0f52dab8b63d4-staging-24325-deployment",
@@ -28,6 +28,10 @@
         "croslayer": {
           "deploymentBucketName": "amplify-amplify0f52dab8b63d4-staging-24325-deployment",
           "s3Key": "amplify-builds/croslayer-build.zip"
+        },
+        "userLambdaAmplify": {
+          "deploymentBucketName": "amplify-amplify0f52dab8b63d4-staging-24325-deployment",
+          "s3Key": "amplify-builds/userLambdaAmplify-6d356e6e2b4244462b4a-build.zip"
         }
       }
     },
