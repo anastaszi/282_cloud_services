@@ -6,6 +6,7 @@
 [okta/okta-oidc-js](https://github.com/okta/okta-oidc-js/tree/master/packages/jwt-verifier)
 
 [from SQL DB to Dynamo DB](https://aws.amazon.com/dms/?nc=bc&pg=pr)
+[Bulk upload from csv to DynamoDB](https://aws.amazon.com/blogs/database/implementing-bulk-csv-ingestion-to-amazon-dynamodb/)
 
 
 + [ ] Discuss features and architecture
