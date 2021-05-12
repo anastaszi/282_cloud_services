@@ -1,0 +1,7 @@
+{
+    "tableName": "requestDB282",
+    "partitionKeyName": "uuid",
+    "partitionKeyType": "S",
+    "sortKeyName": "requestType",
+    "sortKeyType": "S"
+}

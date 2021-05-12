@@ -9,6 +9,7 @@ import Col from 'react-bootstrap/Col'
 import { DashboardPage } from './pages/dashboard';
 import { UIPage } from './pages/ui';
 import { ProfilePage } from './pages/profile';
+import { AdminPage } from './pages/admin';
 import { ChatsPage } from './pages/chats';
 import { MessagesPage } from './pages/messages';
 import { TopNavComponent } from './components/top-navigation';
@@ -44,6 +45,9 @@ const AppWithRouterAccess = () => {
               <Route path="/ui">
                 <UIPage />
               </Route>
+                < SecureRoute path="/admin">
+                  <AdminPage />
+                </SecureRoute>
                 < SecureRoute path="/profile">
                   <ProfilePage />
                 </SecureRoute>

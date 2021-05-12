@@ -1,0 +1,21 @@
+@import "../../styles/variables.css";
+@import "../../styles/theme.css";
+
+.section-body.user-info {
+  max-height: 100%;
+}
+
+.section-body > .row {
+  margin-top: 10px;
+  margin-left: 0px;
+}
+
+.big-row {
+  display: flex;
+align-items: center;
+}
+
+span.user-info {
+  font-weight: bold;
+  margin-left: 10px;
+}

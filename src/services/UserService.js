@@ -6,7 +6,14 @@ class UserService {
 
   getUsers() {
     var userToken = Cache.getItem('token');
-    return axios.get(Base_URL + '/users', { headers: {"Authorization" : `Bearer ${userToken}`} });
+    var nonce = Cache.getItem('nonce');
+    return axios.get(Base_URL + '/users', { headers: {"Authorization" : `Bearer ${userToken} ${nonce}`} });
+  }
+
+  getMe() {
+    var userToken = Cache.getItem('token');
+    var nonce = Cache.getItem('nonce');
+    return axios.get(Base_URL + '/users/me', { headers: {"Authorization" : `Bearer ${userToken} ${nonce}`} });
   }
 
   /*createAccount(userId, option) {

@@ -19,7 +19,7 @@ const Dashboard = props => {
     // Check if user logged In and set users initials
     Hub.listen('oktaAuth', (data) => {
       console.log(data)
-      setUser({name: Cache.getItem('userFistName'), lastName: Cache.getItem('userLastName'), email: Cache.getItem('email')});
+      setUser({name: Cache.getItem('userFirstName'), lastName: Cache.getItem('userLastName'), email: Cache.getItem('email')});
       setUserInitials(Cache.getItem('userInitials'));
     })
     setConversations([{user: "Anna Z.", lastMessage: "How are you?", id: 12346}, {user: "Mathew F.", lastMessage: "I like it:)", id: 34235}])
