@@ -1,20 +1,64 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useReducer} from 'react';
 import { Cache } from 'aws-amplify';
 import Button from 'react-bootstrap/Button';
 import UserService from '../../services/UserService';
+import { UserInfoComponent } from '../../components/user-info';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import './Profile.css';
 
-const Profile = props => {
-  const [userLogin, setUserLogin] = useState(true);
+const initialState = {user: null}
 
-  const getUsers = () => {
-    UserService.getUsers().then(res => console.log(res)).catch(e => console.log(e))
+function reducer(state, action) {
+  const { user} = state;
+
+  console.log(state)
+  switch(action.type) {
+    case 'setUser':
+      return { ...state, ...action.payload}
+    default:
+     return state
+  }
+}
+
+const Profile = props => {
+  const [user, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => {
+    let userObj = {};
+    userObj.lastName = Cache.getItem('userLastName');
+    userObj.firstName = Cache.getItem('userFirstName');
+    userObj.email = Cache.getItem('email');
+    userObj.permit = Cache.getItem('userEmployeeGroup');
+    dispatch({type: 'setUser', payload: userObj});
+    getMe();
+}, []);
+
+  const getMe = () => {
+    UserService.getMe().then((res) =>
+    {
+      let data = res.data[0];
+      if (data)
+      {
+        let userData = {
+          department: data.department,
+          position: data.postion,
+          limit: data.participantsLimit
+        }
+        dispatch({type: 'setUser', payload: userData});
+      }
+    }).catch(e => console.log(e))
   }
 
   return (
     <>
-      <h1>Here will be ProfilePage</h1>
-                <Button variant="blue" className="px-4" onClick={getUsers}>New Message</Button>
+    <Row className="flex-fill d-flex mb-3">
+      <Col className="section mx-3 col-6"><UserInfoComponent user={user}/></Col>
+    </Row>
+    <Row className="flex-fill d-flex mb-3">
+      <Col className="section mx-3"><UserInfoComponent /></Col>
+    </Row>
+
     </>
   );
 }

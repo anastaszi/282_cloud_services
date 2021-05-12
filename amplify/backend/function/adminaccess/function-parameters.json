@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "storage": {
+      "userChatter": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "requestDB282": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    }
+  },
+  "lambdaLayers": [
+    {
+      "type": "ProjectLayer",
+      "resourceName": "oktalayer",
+      "version": 1
+    },
+    {
+      "type": "ProjectLayer",
+      "resourceName": "croslayer",
+      "version": 1
+    }
+  ]
+}

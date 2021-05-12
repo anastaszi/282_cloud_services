@@ -6,7 +6,14 @@ or in the "license" file accompanying this file. This file is distributed on an 
 See the License for the specific language governing permissions and limitations under the License.
 */
 
-
+/* Amplify Params - DO NOT EDIT
+	ENV
+	REGION
+	STORAGE_REQUESTDB282_ARN
+	STORAGE_REQUESTDB282_NAME
+	STORAGE_USERCHATTER_ARN
+	STORAGE_USERCHATTER_NAME
+Amplify Params - DO NOT EDIT */
 
 const AWS = require('aws-sdk')
 var awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
@@ -18,34 +25,43 @@ const OktaJwtVerifier = require('@okta/jwt-verifier');
 AWS.config.update({ region: process.env.TABLE_REGION });
 const oktaJwtVerifier = new OktaJwtVerifier({
   clientId: process.env.OKTA_CLIENT_ID,
-  issuer: `${process.env.OKTA_ORG_URL}/oauth2/default`
+  issuer: `${process.env.OKTA_ORG_URL}/oauth2/default`,
+  assertClaims: {
+    employeeGroup: 'admin'
+  }
 });
 
 const dynamodb = new AWS.DynamoDB.DocumentClient();
 
-let tableName = "userChatter";
+let requestTableName = "requestDB282";
+let userTableName = "userChatter";
 if(process.env.ENV && process.env.ENV !== "NONE") {
-  tableName = tableName + '-' + process.env.ENV;
+  requestTableName = requestTableName + '-' + process.env.ENV;
+  userTableName = userTableName + '-' + process.env.ENV;
 }
 
 const userIdPresent = false; // TODO: update in case is required to use that definition
-const partitionKeyName = "employeeId";
-const partitionKeyType = "S";
-const sortKeyName = "";
-const sortKeyType = "";
-const hasSortKey = sortKeyName !== "";
-const path = "/users";
+const partitionKeyRequestName = "uuid";
+const partitionKeyRequestType = "S";
+const sortKeyRequestName = "requestType";
+const sortKeyRequestType = "S";
+const hasSortRequestKey = sortKeyRequestName !== "";
+const path = "/admin";
 const UNAUTH = 'UNAUTH';
-const hashKeyPath = '/:' + partitionKeyName;
-const sortKeyPath = hasSortKey ? '/:' + sortKeyName : '';
-
-
-
+const hashKeyRequestPath = '/:' + partitionKeyRequestName;
+const sortKeyRequestPath = hasSortRequestKey ? '/:' + sortKeyRequestName : '';
 // declare a new express app
 var app = express()
 app.use(bodyParser.json())
 app.use(awsServerlessExpressMiddleware.eventContext())
-app.use(cors())
+
+// Enable CORS for all methods
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*")
+  res.header("Access-Control-Allow-Headers", "*")
+  next()
+});
+
 
 // verify token from Okta
 app.use(function(req, res, next) {
@@ -62,19 +78,13 @@ app.use(function(req, res, next) {
   return oktaJwtVerifier.verifyIdToken(accessToken, process.env.OKTA_CLIENT_ID, nonce)
     .then((jwt) => {
       req.jwt = jwt;
-      res.locals.userId = jwt.claims.employeeNum;
       next();
     })
     .catch((err) => {
       res.status(401).send(err.message);
     });
 })
-// Enable CORS for all methods
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*")
-  res.header("Access-Control-Allow-Headers", "*")
-  next()
-});
+
 
 // convert url string param to expected Type
 const convertUrlType = (param, type) => {
@@ -87,49 +97,41 @@ const convertUrlType = (param, type) => {
 }
 
 /********************************
- * HTTP Get method for list objects *
+ * HTTP Get  user info *
  ********************************/
- app.get(path, function(req, res) {
-    let queryParams = {
-      TableName: tableName, // TODO: UPDATE THIS WITH THE ACTUAL NAME OF THE FORM TABLE ENV VAR (set by Amplify CLI)
-    }
-    dynamodb.scan(queryParams, function(err, data) {
-      if (err) res.json({ err })
-      else res.json({ data })
-    })
- });
+app.get(path + '/user' + '/:employeeId', function(req, res) {
 
- /********************************
-  * HTTP Get info about the user: me/ *
-  ********************************/
-
- app.get(path + '/me', function(req, res) {
    var condition = {}
    condition['employeeId'] = {
      ComparisonOperator: 'EQ'
    }
 
    try {
-     condition['employeeId']['AttributeValueList'] = [ convertUrlType(res.locals.userId, "S") ];
+     condition['employeeId']['AttributeValueList'] = [ convertUrlType(req.params['employeeId'], "S") ];
    } catch(err) {
      res.statusCode = 500;
      res.json({error: 'Wrong column type ' + err});
    }
 
-    let queryParams = {
-      TableName: tableName,
-      KeyConditions: condition // TODO: UPDATE THIS WITH THE ACTUAL NAME OF THE FORM TABLE ENV VAR (set by Amplify CLI)
-    }
-    dynamodb.query(queryParams, (err, data) => {
-      if (err) {
-        res.statusCode = 500;
-        res.json({error: 'Could not load info: ' + err});
-      } else {
-        res.json(data.Items);
-      }
-    });
- });
+   let queryParams = {
+     TableName: userTableName,
+     KeyConditions: condition
+   }
 
+   dynamodb.query(queryParams, (err, data) => {
+     if (err) {
+       res.statusCode = 500;
+       res.json({error: 'Could not load items: ' + err});
+     } else {
+       res.json(data.Items);
+     }
+   });
+});
+
+/********************************
+ * HTTP Get method for list objects *
+ ********************************/
+/*
 app.get(path + hashKeyPath, function(req, res) {
   var condition = {}
   condition[partitionKeyName] = {
@@ -161,11 +163,11 @@ app.get(path + hashKeyPath, function(req, res) {
     }
   });
 });
-
+*/
 /*****************************************
  * HTTP Get method for get single object *
  *****************************************/
-
+/*
 app.get(path + '/object' + hashKeyPath + sortKeyPath, function(req, res) {
   var params = {};
   if (userIdPresent && req.apiGateway) {
@@ -206,12 +208,12 @@ app.get(path + '/object' + hashKeyPath + sortKeyPath, function(req, res) {
     }
   });
 });
-
+*/
 
 /************************************
 * HTTP put method for insert object *
 *************************************/
-
+/*
 app.put(path, function(req, res) {
 
   if (userIdPresent) {
@@ -231,11 +233,11 @@ app.put(path, function(req, res) {
     }
   });
 });
-
+*/
 /************************************
 * HTTP post method for insert object *
 *************************************/
-
+/*
 app.post(path, function(req, res) {
 
   if (userIdPresent) {
@@ -255,11 +257,11 @@ app.post(path, function(req, res) {
     }
   });
 });
-
+*/
 /**************************************
 * HTTP remove method to delete object *
 ***************************************/
-
+/*
 app.delete(path + '/object' + hashKeyPath + sortKeyPath, function(req, res) {
   var params = {};
   if (userIdPresent && req.apiGateway) {
@@ -295,6 +297,10 @@ app.delete(path + '/object' + hashKeyPath + sortKeyPath, function(req, res) {
     }
   });
 });
+
+*/
+
+
 app.listen(3000, function() {
     console.log("App started")
 });

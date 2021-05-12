@@ -23,6 +23,7 @@ letter-spacing: 0.02em;
 
 .navbtn > svg {
   height: 18px;
+  margin-right: 5px;
 }
 
 .logo-name > h1 {
