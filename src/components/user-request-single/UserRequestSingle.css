@@ -1,0 +1,10 @@
+@import "../../styles/variables.css";
+@import "../../styles/theme.css";
+
+.request-dot svg{
+  fill: var(--color-grass)
+}
+
+.request-info {
+  font-weight: bold;
+}

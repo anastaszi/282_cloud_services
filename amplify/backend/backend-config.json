@@ -159,8 +159,20 @@
           "attributes": [
             "Arn"
           ]
+        },
+        {
+          "category": "function",
+          "resourceName": "uuid",
+          "attributes": [
+            "Arn"
+          ]
         }
       ]
+    },
+    "uuid": {
+      "providerPlugin": "awscloudformation",
+      "service": "LambdaLayer",
+      "build": true
     }
   },
   "storage": {

@@ -28,7 +28,7 @@ const UserInterests = (props) => {
   }
 
   const createTempInterest = (elem) => {
-    return {interest: elem, active: interests.includes(elem)}
+    return {interest: elem, active: interests?.includes(elem)}
   }
 
   const editInterests = () => {

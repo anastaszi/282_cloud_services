@@ -28,6 +28,24 @@ class UserService {
     return axios.put(Base_URL + '/interests/update', { interests: data}, {headers: {"Authorization" : `Bearer ${userToken} ${nonce}`}});
   }
 
+  updateLimit(data) {
+    var userToken = Cache.getItem('token');
+    var nonce = Cache.getItem('nonce');
+    return axios.put(Base_URL + '/requests/limit', {data: data}, {headers: {"Authorization" : `Bearer ${userToken} ${nonce}`}});
+  }
+
+  createCustom(data) {
+    var userToken = Cache.getItem('token');
+    var nonce = Cache.getItem('nonce');
+    return axios.put(Base_URL + '/requests/custom', {data: data}, {headers: {"Authorization" : `Bearer ${userToken} ${nonce}`}});
+  }
+
+  getRequests() {
+    var userToken = Cache.getItem('token');
+    var nonce = Cache.getItem('nonce');
+    return axios.get(Base_URL + '/requests/me', {headers: {"Authorization" : `Bearer ${userToken} ${nonce}`}});
+  }
+
   /*createAccount(userId, option) {
     return axios.post(Base_URL + '/me/create/' + option, {userId})
   }*/

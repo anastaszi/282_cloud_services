@@ -12,13 +12,17 @@ import './Profile.css';
 const initialState = {user: null}
 
 function reducer(state, action) {
-  const { user, interests } = state;
+  const { user, interests, limit, requests } = state;
 
   switch(action.type) {
     case 'setUser':
       return { ...state, ...action.payload}
     case 'setInterests':
         return { ...state, interests: action.payload}
+    case 'setLimit':
+        return { ...state, limit: action.payload}
+    case 'setRequests':
+        return { ...state, requests: action.payload.sort((a, b) => (a.dateCreated > b.dateCreated) ? -1 : 1)}
     default:
      return state
   }
@@ -35,6 +39,7 @@ const Profile = props => {
     userObj.permit = Cache.getItem('userEmployeeGroup');
     dispatch({type: 'setUser', payload: userObj});
     getMe();
+    getRequests();
 }, []);
 
   const getMe = () => {
@@ -43,14 +48,13 @@ const Profile = props => {
       let data = res.data[0];
       if (data)
       {
-        console.log(data)
         let userData = {
           department: data.department,
           position: data.postion,
-          limit: data.participantsLimit
+          limit: data.participantsLimit,
+          interests: data.interests
         }
         dispatch({type: 'setUser', payload: userData});
-        dispatch({type: 'setInterests', payload: data.interests})
       }
     }).catch(e => console.log(e))
   }
@@ -62,14 +66,37 @@ const Profile = props => {
     ).catch(e => console.log(e))
   }
 
+  const createRequestLimit = (data) => {
+    console.log(data)
+    UserService.updateLimit(data).then((res) => {
+      getRequests();
+    }
+  ).catch(e => console.log(e))
+  }
+
+  const createRequestCustom = (data) => {
+    console.log(data)
+    UserService.createCustom(data).then((res) => {
+      getRequests();
+    }
+  ).catch(e => console.log(e))
+  }
+
+  const getRequests = () => {
+    UserService.getRequests().then((res) => {
+      dispatch({type: 'setRequests', payload: res.data})
+    }
+  ).catch(e => console.log(e))
+  }
+
   return (
     <>
     <Row className="flex-fill d-flex mb-3">
-      <Col className="section mx-3 col"><UserInfoComponent user={user}/></Col>
+      <Col className="section mx-3 col"><UserInfoComponent user={user} updateLimit={createRequestLimit}/></Col>
       <Col className="section mx-3 col"><UserInterestsComponent interests={user?.interests} update={updateInterests}/></Col>
     </Row>
     <Row className="flex-fill d-flex mb-3">
-      <Col className="section mx-3"><UserRequestsComponent /></Col>
+      <Col className="section mx-3"><UserRequestsComponent requests={user?.requests} createRequest={createRequestCustom}/></Col>
     </Row>
 
     </>
