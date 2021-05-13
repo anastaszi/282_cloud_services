@@ -12,63 +12,31 @@ const AWS = require('aws-sdk')
 var awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
 var bodyParser = require('body-parser')
 var express = require('express')
-var cors = require('cors')
-const OktaJwtVerifier = require('@okta/jwt-verifier');
 
 AWS.config.update({ region: process.env.TABLE_REGION });
-const oktaJwtVerifier = new OktaJwtVerifier({
-  clientId: process.env.OKTA_CLIENT_ID,
-  issuer: `${process.env.OKTA_ORG_URL}/oauth2/default`
-});
 
 const dynamodb = new AWS.DynamoDB.DocumentClient();
 
-let tableName = "userChatter";
+let tableName = "requestDB282";
 if(process.env.ENV && process.env.ENV !== "NONE") {
   tableName = tableName + '-' + process.env.ENV;
 }
 
 const userIdPresent = false; // TODO: update in case is required to use that definition
-const partitionKeyName = "employeeId";
+const partitionKeyName = "uuid";
 const partitionKeyType = "S";
-const sortKeyName = "";
-const sortKeyType = "";
+const sortKeyName = "requestType";
+const sortKeyType = "S";
 const hasSortKey = sortKeyName !== "";
-const path = "/users";
+const path = "/requests";
 const UNAUTH = 'UNAUTH';
 const hashKeyPath = '/:' + partitionKeyName;
 const sortKeyPath = hasSortKey ? '/:' + sortKeyName : '';
-
-
-
 // declare a new express app
 var app = express()
 app.use(bodyParser.json())
 app.use(awsServerlessExpressMiddleware.eventContext())
-app.use(cors())
 
-// verify token from Okta
-app.use(function(req, res, next) {
-  const authHeader = req.headers.authorization || '';
-  const match = authHeader.split(' ');
-
-  if (!match) {
-    res.status(401);
-    return next('Unauthorized');
-  }
-
-  const accessToken = match[1];
-  const nonce = match[2];
-  return oktaJwtVerifier.verifyIdToken(accessToken, process.env.OKTA_CLIENT_ID, nonce)
-    .then((jwt) => {
-      req.jwt = jwt;
-      res.locals.userId = jwt.claims.employeeNum;
-      next();
-    })
-    .catch((err) => {
-      res.status(401).send(err.message);
-    });
-})
 // Enable CORS for all methods
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*")
@@ -87,57 +55,8 @@ const convertUrlType = (param, type) => {
 }
 
 /********************************
- * HTTP Get all users *
+ * HTTP Get method for list objects *
  ********************************/
- app.get(path, function(req, res) {
-    let queryParams = {
-      TableName: tableName, // TODO: UPDATE THIS WITH THE ACTUAL NAME OF THE FORM TABLE ENV VAR (set by Amplify CLI)
-    }
-    dynamodb.scan(queryParams, function(err, data) {
-      if (err) res.json({ err })
-      else res.json({ data })
-    })
- });
-
- /********************************
-  * HTTP Get info about interests
-  ********************************/
-
-  app.get('/interests', function(req, res) {
-      let interests = ["Cooking", "Python", "AI", "ML", "AWS", "Hiking", "Running", "Coffee"]
-      res.json(interests);
-  });
-
-  /********************************
-   * HTTP Get info about the user: me/ *
-   ********************************/
-
- app.get('/me', function(req, res) {
-   var condition = {}
-   condition['employeeId'] = {
-     ComparisonOperator: 'EQ'
-   }
-
-   try {
-     condition['employeeId']['AttributeValueList'] = [ convertUrlType(res.locals.userId, "S") ];
-   } catch(err) {
-     res.statusCode = 500;
-     res.json({error: 'Wrong column type ' + err});
-   }
-
-    let queryParams = {
-      TableName: tableName,
-      KeyConditions: condition // TODO: UPDATE THIS WITH THE ACTUAL NAME OF THE FORM TABLE ENV VAR (set by Amplify CLI)
-    }
-    dynamodb.query(queryParams, (err, data) => {
-      if (err) {
-        res.statusCode = 500;
-        res.json({error: 'Could not load info: ' + err});
-      } else {
-        res.json(data.Items);
-      }
-    });
- });
 
 app.get(path + hashKeyPath, function(req, res) {
   var condition = {}
@@ -221,31 +140,17 @@ app.get(path + '/object' + hashKeyPath + sortKeyPath, function(req, res) {
 * HTTP put method for insert object *
 *************************************/
 
-app.put('/interests/update', function(req, res) {
-  let interests = [];
-  if (req.body) {
-    try {
-      interests = req.body.interests;
-    } catch(err) {
-      res.statusCode = 500;
-      res.json({error: 'Wrong interests:)' + err});
-    }
-  }
+app.put(path, function(req, res) {
 
+  if (userIdPresent) {
+    req.body['userId'] = req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH;
+  }
 
   let putItemParams = {
     TableName: tableName,
-    Key: {
-      "employeeId" : res.locals.userId
-    },
-    UpdateExpression: "set interests = :i",
-    ExpressionAttributeValues:{
-      ":i": interests
-    },
-    ReturnValues:"UPDATED_NEW"
+    Item: req.body
   }
-
-  dynamodb.update(putItemParams, (err, data) => {
+  dynamodb.put(putItemParams, (err, data) => {
     if(err) {
       res.statusCode = 500;
       res.json({error: err, url: req.url, body: req.body});

@@ -31,11 +31,15 @@
         },
         "userLambdaAmplify": {
           "deploymentBucketName": "amplify-amplify0f52dab8b63d4-staging-24325-deployment",
-          "s3Key": "amplify-builds/userLambdaAmplify-72745232502f6d7a516c-build.zip"
+          "s3Key": "amplify-builds/userLambdaAmplify-71412b6d70433944696a-build.zip"
         },
         "adminaccess": {
           "deploymentBucketName": "amplify-amplify0f52dab8b63d4-staging-24325-deployment",
           "s3Key": "amplify-builds/adminaccess-47354f4e536c35543865-build.zip"
+        },
+        "userRequests": {
+          "deploymentBucketName": "amplify-amplify0f52dab8b63d4-staging-24325-deployment",
+          "s3Key": "amplify-builds/userRequests-6445494e62696c655346-build.zip"
         }
       }
     },
