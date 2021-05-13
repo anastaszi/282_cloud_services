@@ -10,6 +10,11 @@
   margin-left: 0px;
 }
 
+form > .row {
+  margin-top: 10px;
+  margin-left: 0px;
+}
+
 .big-row {
   display: flex;
 align-items: center;
@@ -19,3 +24,7 @@ span.user-info {
   font-weight: bold;
   margin-left: 10px;
 }
+
+input[type=range]::-ms-track {
+background-color:green;
+  }

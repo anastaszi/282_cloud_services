@@ -31,6 +31,10 @@
     "functioncroslayerArn": {
       "Type": "String",
       "Default": "functioncroslayerArn"
+    },
+    "functionuuidArn": {
+      "Type": "String",
+      "Default": "functionuuidArn"
     }
   },
   "Conditions": {
@@ -101,6 +105,9 @@
           },
           {
             "Fn::Sub": "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:layer:croslayer-staging:1"
+          },
+          {
+            "Fn::Sub": "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:layer:uuid-staging:1"
           }
         ],
         "Timeout": "25"

@@ -39,7 +39,11 @@
         },
         "userRequests": {
           "deploymentBucketName": "amplify-amplify0f52dab8b63d4-staging-24325-deployment",
-          "s3Key": "amplify-builds/userRequests-6445494e62696c655346-build.zip"
+          "s3Key": "amplify-builds/userRequests-3873555a4f5475712b6a-build.zip"
+        },
+        "uuid": {
+          "deploymentBucketName": "amplify-amplify0f52dab8b63d4-staging-24325-deployment",
+          "s3Key": "amplify-builds/uuid-build.zip"
         }
       }
     },
@@ -66,6 +70,18 @@
                 }
               ],
               "hash": "d88dV3ycHsPGO5pivvnUeOShNTFKyV77KlePLMcl5Jg="
+            }
+          }
+        },
+        "uuid": {
+          "layerVersionMap": {
+            "1": {
+              "permissions": [
+                {
+                  "type": "private"
+                }
+              ],
+              "hash": "gRR41G9rMCpTf5s88IixvHuRh8BKt/Of0MF62KUak8A="
             }
           }
         }

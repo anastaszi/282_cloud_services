@@ -1,6 +1,10 @@
 @import "../../styles/variables.css";
 @import "../../styles/theme.css";
 
-.section-header.user-interests {
-  background-color: var(--color-grass);
+.section-header.user-requests {
+  background-color: var(--color-mustard);
+}
+
+.section-body.user-requests {
+  max-width: 100%;
 }
