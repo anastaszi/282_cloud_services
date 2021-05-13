@@ -90,14 +90,14 @@ p {
   padding: 0 0.25rem;
 }
 
-.btn-blue, .btn-dark, .btn-mustard, .btn-green, .btn-grass {
+.btn-blue, .btn-dark, .btn-mustard, .btn-green, .btn-grass, .btn-grey {
   text-transform: uppercase;
   font-size: 14px;
   font-weight: 600;
   color: var(--color-white)
 }
 
-.btn-dark, .btn-mustard, .btn-green, .btn-grass {
+.btn-dark, .btn-mustard, .btn-green, .btn-grass, .btn-grey {
   width: 8rem;
 }
 
@@ -107,6 +107,10 @@ p {
 
 .btn-dark {
   background-color: var(--color-dark);
+}
+
+.btn-grey {
+  background-color: var(--color-grey);
 }
 
 .btn-mustard {

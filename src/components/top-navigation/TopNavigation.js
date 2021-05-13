@@ -5,6 +5,7 @@ import {
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { useOktaAuth } from '@okta/okta-react';
+import UserService from '../../services/UserService';
 import { Hub, Cache } from 'aws-amplify';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
@@ -41,8 +42,19 @@ const TopNavigation = props => {
         Cache.setItem('nonce', authState.idToken.claims.nonce);
         Cache.setItem('email', data.email);
         Hub.dispatch('oktaAuth',{event: 'userDataFetched'});
+        getInterests();
       })}
   }, [authState, oktaAuth]);
+
+  const getInterests = () => {
+    const expirationDay = new Date();
+    expirationDay.setDate(expirationDay.getDate() + 1);
+    if (!Cache.getItem('interests')) {
+      UserService.getInterests().then((res) => {
+        Cache.setItem('interests', res.data, { expires: expirationDay.getTime() })
+      }).catch(e => console.log(e))
+    }
+  }
 
   const navLinks = authState.isAuthenticated ?
   <Nav className="ml-auto">

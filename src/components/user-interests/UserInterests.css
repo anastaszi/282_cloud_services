@@ -1,0 +1,6 @@
+@import "../../styles/variables.css";
+@import "../../styles/theme.css";
+
+.section-header.user-interests {
+  background-color: var(--color-grass);
+}

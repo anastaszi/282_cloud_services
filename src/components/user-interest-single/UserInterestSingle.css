@@ -1,0 +1,62 @@
+@import "../../styles/variables.css";
+@import "../../styles/theme.css";
+
+.btn.small {
+  padding: 0.25rem 1rem;
+  width: unset;
+  opacity: 0.5;
+  font-weight: bolder;
+}
+
+.btn.small.true {
+  opacity: 1;
+}
+
+.btn.small {
+  font-size: 14px;
+}
+
+.status-owner svg{
+  fill: var(--color-mustard)
+}
+
+.status-participant svg{
+  fill: var(--color-grass)
+}
+
+.chat-description {
+  font-weight: 700;
+}
+
+.blue {
+  background-color: var(--color-blue);
+}
+
+.dark {
+  background-color: var(--color-dark);
+}
+
+.mustard {
+  background-color: var(--color-mustard);
+}
+
+.green {
+  background-color: var(--color-green);
+}
+
+.grass {
+  background-color: var(--color-green);
+}
+
+.interest-block {
+  color: var(--color-white);
+  cursor: default;
+  display: inline-block;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  width: fit-content;
+  padding: 0.25rem 1rem;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 700;
+}

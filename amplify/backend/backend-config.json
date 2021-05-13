@@ -128,6 +128,39 @@
           ]
         }
       ]
+    },
+    "userRequests": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "storage",
+          "resourceName": "requestDB282",
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "attributeEnvMap": {
+            "Name": "TABLE_NAME",
+            "Arn": "TABLE_ARN"
+          }
+        },
+        {
+          "category": "function",
+          "resourceName": "oktalayer",
+          "attributes": [
+            "Arn"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "croslayer",
+          "attributes": [
+            "Arn"
+          ]
+        }
+      ]
     }
   },
   "storage": {
@@ -166,6 +199,14 @@
         {
           "category": "function",
           "resourceName": "userLambdaAmplify",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "userRequests",
           "attributes": [
             "Name",
             "Arn"
