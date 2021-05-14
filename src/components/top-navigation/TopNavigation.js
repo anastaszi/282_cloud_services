@@ -59,9 +59,11 @@ const TopNavigation = props => {
   const navLinks = authState.isAuthenticated ?
   <Nav className="ml-auto">
     <Nav.Link href="/admin" className="navbtn"><AdminIcon />Admin</Nav.Link>
-    <Nav.Link href="/chats" className="navbtn"><MegaPhoneIcon />Lifechats</Nav.Link>
-    <Nav.Link href="/messages" className="navbtn"><ChatIcon />Messages</Nav.Link>
+    <Nav.Link href="/videoChat" className="navbtn"><MegaPhoneIcon />Video Calls</Nav.Link>
+    {/* <Nav.Link href="/messages" className="navbtn"><ChatIcon />Messages</Nav.Link> */}
     <Nav.Link href="/profile" className="navbtn"><ProfileIcon />Profile</Nav.Link>
+    {/* <Nav.Link href="/videoChat" className="navbtn"><ProfileIcon />VideoChat</Nav.Link> */}
+    <Nav.Link href="/maps" className="navbtn"><ProfileIcon />Maps</Nav.Link>
     <Nav.Link className="navbtn" onClick={logout}><ExitIcon /></Nav.Link>
   </Nav> : null ;
 
