@@ -45,7 +45,7 @@ console.log(props)
               </Row>
             </form>
             :
-            <Row className="big-row" >Chat Guest Limit: <span className="user-info">{props.user?.limit}</span> <Button variant="blue" className="ml-2" onClick={() => setUpdate(true)}>Update</Button></Row>
+            <Row className="big-row" >Guest Limit: <span className="user-info">{props.user?.limit}</span> <Button variant="blue" className="ml-2" onClick={() => setUpdate(true)}>Request Update</Button></Row>
           }
       </div>
     </div>

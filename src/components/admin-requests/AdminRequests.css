@@ -6,5 +6,9 @@
 }
 
 .section-body.user-requests {
-  max-height: 100%;
+  max-width: 100%;
+}
+
+.btn.wide {
+  width: unset;
 }

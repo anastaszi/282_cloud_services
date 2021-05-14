@@ -37,17 +37,20 @@ const UserRequests = (props) => {
   return (
     <div className="w-100 h-100 section-content">
       <div className="section-header user-requests"><StopLightsIcon /><h3>Requests</h3></div>
-      <div className="section-body user-requests">
-        <Row>
-          <Col sm={7}>{
+
+
+        <Row className="mx-0">
+          <Col sm={7} className="section-body user-requests ml-3">{
             props?.request?.length === 0 ?
             "You don't have any request yet"
             :
             props?.requests?.map((elem, index) => <UserRequestSingleComponent key={'request' + index} {...elem}/>)
-          }</Col>
+          }
+
+          </Col>
           <Col>
           <Form onReset={clearForm}>
-            <Form.Text id="requestHelpBlock" muted>
+            <Form.Text id="requestHelpBlock">
               Do you have any custom request? Please, submit one but be mindful of words:)
             </Form.Text>
             <Form.Control
@@ -64,7 +67,6 @@ const UserRequests = (props) => {
             </Form>
           </Col>
         </Row>
-      </div>
     </div>
   );
 }
