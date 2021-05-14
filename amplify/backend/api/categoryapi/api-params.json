@@ -1,0 +1,51 @@
+{
+    "paths": [
+        {
+            "name": "/departments",
+            "lambdaFunction": "caterogoryLambda",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/departments"
+        },
+        {
+            "name": "/roles",
+            "lambdaFunction": "caterogoryLambda",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/roles"
+        },
+        {
+            "name": "/interests",
+            "lambdaFunction": "caterogoryLambda",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/interests"
+        }
+    ],
+    "resourceName": "categoryapi",
+    "apiName": "categoryapi",
+    "functionArns": [
+        {
+            "lambdaFunction": "caterogoryLambda"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-amplify0f52dab8b63d4-staging-24325-authRole",
+        "unAuthRoleName": "amplify-amplify0f52dab8b63d4-staging-24325-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "caterogoryLambda",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}

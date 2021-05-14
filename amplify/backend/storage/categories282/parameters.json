@@ -1,0 +1,5 @@
+{
+    "tableName": "categories282",
+    "partitionKeyName": "category",
+    "partitionKeyType": "S"
+}
