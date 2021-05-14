@@ -1,5 +1,0 @@
-{
-    "tableName": "userChatter",
-    "partitionKeyName": "employeeId",
-    "partitionKeyType": "S"
-}

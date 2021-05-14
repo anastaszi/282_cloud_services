@@ -33,26 +33,12 @@ const VideoChat = (props) => {
     if (room && name) setCall(true);
   };
 
-  // const [userLogin, setUserLogin] = useState(true);
-  // const jitsiConfig = {
-  //     roomName: 'shashwat',
-  //     displayName: 'mona',
-  //     password: 'abc123',
-  //     subject: 'fan',
-  //     parentNode: 'jitsi-container',
-  // };
-  // const { loading, error, jitsi } = useJitsi(jitsiConfig);
+  
 
   return call ? (
     <>
       <h1>Video Conference</h1>
-      {/* <Jitsi roomName={roomName} displayName={userFullName} password={password}/> */}
-      {/* <Container id="container">
-                {error && <p>{error}</p>}
-                
-                <div  width= "100%"  height= "100%"  id={jitsiConfig.parentNode}/>
-            </Container> */}
-      {/* <iframe allow="camera; microphone; fullscreen; display-capture; autoplay" src="https://meet.jit.si/Newmeetup" style="height: 100%; width: 100%; border: 0px;"></iframe> */}
+     
       <Container fluid>
         <Jutsu
           roomName={room}
@@ -68,8 +54,7 @@ const VideoChat = (props) => {
           }}
         />
       </Container>
-      {/* var lastName = Cache.getItem('userLastName');
-            var firstName = Cache.getItem('userFirstName'); */}
+   
     </>
   ) : (
     <>
@@ -113,14 +98,7 @@ const VideoChat = (props) => {
           </Button>
         </Form>
       </Container>
-      {/* <form>
-                <input id='room' type='text' placeholder="Name" value={room} onChange={(e) => setRoom(e.target.value)} />
-                <input id='name' type='text' placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
-                <input id='password' type='text' placeholder='Password (optional)' value={password} onChange={(e) => setPassword(e.target.value)} />
-                <button onClick={handleClick} type='submit'>
-                    Start / Join
-                </button>
-            </form> */}
+     
     </>
   );
 };

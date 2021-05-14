@@ -1,9 +1,0 @@
-{
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "dependencies": {
-    "@okta/jwt-verifier": "^2.1.0"
-  },
-  "devDependencies": {}
-}
