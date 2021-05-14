@@ -11,12 +11,6 @@ import { Maps } from './pages/maps';
 const App = () => (
   
   <Router>
-     {/* < Maps /> */}
-
-     {/* <Route path="/maps">
-                <Maps />
-        </Route> */}
-  
     <AppWithRouterAccess/>
   </Router>
 );
