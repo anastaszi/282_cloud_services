@@ -47,7 +47,7 @@
         },
         "caterogoryLambda": {
           "deploymentBucketName": "amplify-amplify0f52dab8b63d4-staging-24325-deployment",
-          "s3Key": "amplify-builds/caterogoryLambda-4d6a6b30577638376253-build.zip"
+          "s3Key": "amplify-builds/caterogoryLambda-397349734a3651613055-build.zip"
         }
       }
     },
