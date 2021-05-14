@@ -19,6 +19,8 @@ const Maps = (props) => {
           containerElement={<div style={{ height: `500px`, width: "500px" }} />}
           mapElement={<div style={{ height: `100%` }} />}
         />
+
+        <iframe src="https://www.atlistmaps.com/map/4bc972b7-76f6-4050-9293-f34c170475ee?share=true" allow="geolocation" width="100%" height="400px" frameborder="0" scrolling="no" allowfullscreen></iframe>
       </div>
     </>
   );
