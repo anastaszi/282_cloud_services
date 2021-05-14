@@ -1,0 +1,24 @@
+@import "../../styles/variables.css";
+@import "../../styles/theme.css";
+
+.request-dot svg{
+  fill: var(--color-grass)
+}
+
+.admin-request-info {
+  font-size: 12px;
+}
+
+.employee-overall {
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+}
+
+.employee-details {
+  position: absolute;
+  z-index: 20;
+  background-color: var(--color-mustard);
+  margin: 0rem 0.5rem;
+  padding: 1rem;
+}

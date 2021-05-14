@@ -123,6 +123,28 @@ p {
 .btn-grass {
   background-color: var(--color-grass);
 }
+
+.btn-history {
+  background-color: var(--color-grey-alpha);
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.btn-request {
+  text-transform: uppercase;
+  font-weight: bolder;
+  font-size: 12px;
+  padding: 0;
+  margin-left: 0.2rem;
+  margin-right: 0.2rem;
+  width: 6rem;
+}
+
+.btn-request:hover {
+  background-color: var(--color-green);
+  color: var(--color-white)
+}
+
 .btn-clear svg {
   fill: var(--color-grey);
 }

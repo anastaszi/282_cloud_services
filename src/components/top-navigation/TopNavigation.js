@@ -6,6 +6,7 @@ import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { useOktaAuth } from '@okta/okta-react';
 import UserService from '../../services/UserService';
+import UtilService from '../../services/UtilService';
 import { Hub, Cache } from 'aws-amplify';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
@@ -43,6 +44,8 @@ const TopNavigation = props => {
         Cache.setItem('email', data.email);
         Hub.dispatch('oktaAuth',{event: 'userDataFetched'});
         getInterests();
+        getPositions();
+        getDepartments();
       })}
   }, [authState, oktaAuth]);
 
@@ -50,8 +53,31 @@ const TopNavigation = props => {
     const expirationDay = new Date();
     expirationDay.setDate(expirationDay.getDate() + 1);
     if (!Cache.getItem('interests')) {
-      UserService.getInterests().then((res) => {
+      UtilService.getInterests().then((res) => {
+      if (res && res.data.length > 0)
         Cache.setItem('interests', res.data, { expires: expirationDay.getTime() })
+      }).catch(e => console.log(e))
+    }
+  }
+
+  const getDepartments = () => {
+    const expirationDay = new Date();
+    expirationDay.setDate(expirationDay.getDate() + 1);
+    if (!Cache.getItem('departments')) {
+      UtilService.getDepartments().then((res) => {
+      if (res && res.data.length > 0)
+        Cache.setItem('departments', res.data, { expires: expirationDay.getTime() })
+      }).catch(e => console.log(e))
+    }
+  }
+
+  const getPositions = () => {
+    const expirationDay = new Date();
+    expirationDay.setDate(expirationDay.getDate() + 1);
+    if (!Cache.getItem('roles')) {
+      UtilService.getPositions().then((res) => {
+        if (res && res.data.length > 0)
+          Cache.setItem('roles', res.data[0].details, { expires: expirationDay.getTime() })
       }).catch(e => console.log(e))
     }
   }
