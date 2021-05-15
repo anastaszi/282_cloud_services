@@ -66,7 +66,7 @@ const AppWithRouterAccess = () => {
                   <VideoPage />
                 </SecureRoute>
                 <SecureRoute path="/" exact={true}>
-                  <DashboardPage />
+                  <ProfilePage />
                 </SecureRoute>
                 <Route path="/login" render={() => <LoginPage config={oktaSignInConfig} />} />
                 <Route path='/login/callback' component={LoginCallback} />
