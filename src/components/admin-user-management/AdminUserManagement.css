@@ -1,0 +1,20 @@
+@import "../../styles/variables.css";
+@import "../../styles/theme.css";
+
+.section-header.user-management {
+  background-color: var(--color-dark);
+}
+
+.section-body.user-management {
+  max-width: 100%;
+}
+
+.btn.wide {
+  width: unset;
+}
+
+
+.or-column {
+  display: flex;
+  align-items: center;
+}

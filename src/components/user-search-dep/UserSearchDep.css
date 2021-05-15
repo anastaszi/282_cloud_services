@@ -1,0 +1,14 @@
+@import "../../styles/variables.css";
+@import "../../styles/theme.css";
+
+.section-header.user-requests {
+  background-color: var(--color-mustard);
+}
+
+.section-body.user-requests {
+  max-width: 100%;
+}
+
+.btn.wide {
+  width: unset;
+}

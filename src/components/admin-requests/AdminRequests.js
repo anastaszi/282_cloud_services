@@ -15,7 +15,6 @@ const AdminRequests = (props) => {
 
   useEffect(() => {
     setRequests(props.requests);
-    console.log(props)
   }, [props]);
 
   const setLimitVisibility = (e) => {
