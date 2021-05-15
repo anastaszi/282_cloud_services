@@ -10,19 +10,7 @@ const UserDetails = props => {
   useEffect(() => {
     if (props.show && !props.user)
       setLoading(true);
-    console.log(props.user)
   }, [props]);
-/*
-  department: "Data Science"
-  email: "dmitri.baba@modularchat.com"
-  employeeId: "15947"
-  firstName: "Dmitri"
-  interests: (4) ["Python", "AI", "ML", "Coffee"]
-  lastName: "Baba"
-  participantsLimit: 70
-  postion: "Manager"
-*/
-
   return (
       <>
       {loading && <Spinner animation="border" variant="info" />}

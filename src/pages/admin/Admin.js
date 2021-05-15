@@ -1,4 +1,5 @@
 import React, {useState, useReducer, useEffect} from 'react';
+import { useHistory } from "react-router-dom";
 import { Cache } from 'aws-amplify';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -6,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 import UserService from '../../services/UserService';
 import AdminService from '../../services/AdminService';
 import { AdminRequestsComponent } from '../../components/admin-requests';
+import { AdminUserManagementComponent } from '../../components/admin-user-management';
 import './Admin.css';
 
 const initialState = {limitOpened: [], limitClosed: [], customClosed: [], customOpened: []}
@@ -28,8 +30,12 @@ function reducer(state, action) {
 }
 
 const Admin = props => {
+
   const [requests, dispatch] = useReducer(reducer, initialState);
+const history = useHistory();
   useEffect(() => {
+    if (Cache.getItem('userEmployeeGroup') != "admin")
+      history.push('/')
     getOpenRequestsByType('limit')
     getOpenRequestsByType('custom')
     getClosedRequestsByType('limit')
@@ -40,8 +46,8 @@ const Admin = props => {
     UserService.getUsers().then(res => console.log(res)).catch(e => console.log(e))
   }
 
-  const getUserInfo = () => {
-    AdminService.getUserInfo('15947').then((res) =>
+  const getUserInfo = (id) => {
+    AdminService.getUserInfo(id).then((res) =>
     {console.log(res)}).catch(e => console.log(e))
   }
 
@@ -86,11 +92,10 @@ const Admin = props => {
         </Col>
       </Row>
       <Row className="flex-fill d-flex mb-3">
-        <Col className="section mx-3">  <Button variant="blue" className="px-4" onClick={getUsers}>All Users</Button>
-          <Button variant="blue" className="px-4" onClick={getUserInfo}>Specific user</Button></Col>
+        <Col className="section mx-3">
+          <AdminUserManagementComponent getUserDetails={getUserDetails}/>
+        </Col>
       </Row>
-      <Button variant="blue" className="px-4" onClick={getUsers}>All Users</Button>
-      <Button variant="blue" className="px-4" onClick={getUserInfo}>Specific user</Button>
     </>
   );
 }
