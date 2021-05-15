@@ -55,7 +55,7 @@ const TopNavigation = props => {
     if (!Cache.getItem('interests')) {
       UtilService.getInterests().then((res) => {
       if (res && res.data.length > 0)
-        Cache.setItem('interests', res.data, { expires: expirationDay.getTime() })
+        Cache.setItem('interests', res.data[0].details, { expires: expirationDay.getTime() })
       }).catch(e => console.log(e))
     }
   }
@@ -66,7 +66,7 @@ const TopNavigation = props => {
     if (!Cache.getItem('departments')) {
       UtilService.getDepartments().then((res) => {
       if (res && res.data.length > 0)
-        Cache.setItem('departments', res.data, { expires: expirationDay.getTime() })
+        Cache.setItem('departments', res.data[0].details, { expires: expirationDay.getTime() })
       }).catch(e => console.log(e))
     }
   }
@@ -84,7 +84,7 @@ const TopNavigation = props => {
 
   const navLinks = authState.isAuthenticated ?
   <Nav className="ml-auto">
-    <Nav.Link href="/admin" className="navbtn"><AdminIcon />Admin</Nav.Link>
+    {admin && <Nav.Link href="/admin" className="navbtn"><AdminIcon />Admin</Nav.Link>}
     <Nav.Link href="/chats" className="navbtn"><MegaPhoneIcon />Lifechats</Nav.Link>
     <Nav.Link href="/messages" className="navbtn"><ChatIcon />Messages</Nav.Link>
     <Nav.Link href="/profile" className="navbtn"><ProfileIcon />Profile</Nav.Link>
