@@ -8,6 +8,7 @@ import { AdminRequestSingleComponent } from '../admin-request-single'
 import { ReactComponent as PeopleIcon } from '../../assets/people.svg';
 import { UserSearchIdComponent } from '../user-search-id';
 import { UserSearchDepComponent } from '../user-search-dep';
+import { UserDetailsComponent } from '../user-details'
 import './AdminUserManagement.css';
 
 const AdminUserManagement = (props) => {
@@ -24,7 +25,9 @@ const AdminUserManagement = (props) => {
   }
 
   const searchById = (id) => {
-    props.getUserDetails(id).then((res) => console.log(res)).catch(e => console.log(e))
+    props.getUserDetails(id).then((res) => {
+      setUsers(res.data)
+    }).catch(e => console.log(e))
   }
 
   return (
@@ -36,7 +39,9 @@ const AdminUserManagement = (props) => {
         <Col sm="auto" className="or-column">OR</Col>
         <Col><UserSearchDepComponent options={departments} search={searchByDep}/></Col>
       </Row>
-      <Row></Row>
+      <Row>
+      {users && users.map((elem, index) => <Col><UserDetailsComponent user={elem} /></Col>)}
+      </Row>
       <div></div>
       </div>
     </div>
