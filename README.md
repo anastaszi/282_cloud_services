@@ -132,7 +132,7 @@ Authorized but not an Admin
 ![](UIViews/AdminNotAdmin.png)
 
 Unauthorized
-![](UIViews/CloudWatch.png)
+![](UIViews/AdminNotAuthorized.png)
 
 ### UserInfo calls
 Authorized:
