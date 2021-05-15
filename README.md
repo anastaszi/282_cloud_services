@@ -28,6 +28,11 @@
 
 [Figma](https://www.figma.com/) - UX/UI design
 
+## Integration:
+* [Google Maps](https://developers.google.com/maps) - To pin the location
+* [Jitsi Meet](https://meet.jit.si/) - For video conference
+
+
 
 
 ## UIWireFrames
