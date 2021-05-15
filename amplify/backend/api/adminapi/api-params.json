@@ -1,0 +1,35 @@
+{
+    "paths": [
+        {
+            "name": "/admin",
+            "lambdaFunction": "adminaccess",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/admin"
+        }
+    ],
+    "resourceName": "adminapi",
+    "apiName": "adminapi",
+    "functionArns": [
+        {
+            "lambdaFunction": "adminaccess"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-amplify0f52dab8b63d4-staging-24325-authRole",
+        "unAuthRoleName": "amplify-amplify0f52dab8b63d4-staging-24325-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "adminaccess",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
