@@ -66,11 +66,16 @@ app.use(function(req, res, next) {
 // verify token from Okta
 app.use(function(req, res, next) {
   const authHeader = req.headers.authorization || '';
+    if (!authHeader) {
+        res.status(401);
+        return next('Unauthorized');
+    }
+
   const match = authHeader.split(' ');
 
-  if (!match) {
+  if (match.length != 3) {
     res.status(401);
-    return next('Unauthorized');
+    return next('Wrong JWT token format');
   }
 
   const accessToken = match[1];

@@ -31,15 +31,15 @@
         },
         "userLambdaAmplify": {
           "deploymentBucketName": "amplify-amplify0f52dab8b63d4-staging-24325-deployment",
-          "s3Key": "amplify-builds/userLambdaAmplify-71412b6d70433944696a-build.zip"
+          "s3Key": "amplify-builds/userLambdaAmplify-4456356d566e59464a5a-build.zip"
         },
         "adminaccess": {
           "deploymentBucketName": "amplify-amplify0f52dab8b63d4-staging-24325-deployment",
-          "s3Key": "amplify-builds/adminaccess-6e556546656935387572-build.zip"
+          "s3Key": "amplify-builds/adminaccess-34376f3852794171534d-build.zip"
         },
         "userRequests": {
           "deploymentBucketName": "amplify-amplify0f52dab8b63d4-staging-24325-deployment",
-          "s3Key": "amplify-builds/userRequests-3873555a4f5475712b6a-build.zip"
+          "s3Key": "amplify-builds/userRequests-3030396e37657472356e-build.zip"
         },
         "uuid": {
           "deploymentBucketName": "amplify-amplify0f52dab8b63d4-staging-24325-deployment",
@@ -47,7 +47,7 @@
         },
         "caterogoryLambda": {
           "deploymentBucketName": "amplify-amplify0f52dab8b63d4-staging-24325-deployment",
-          "s3Key": "amplify-builds/caterogoryLambda-397349734a3651613055-build.zip"
+          "s3Key": "amplify-builds/caterogoryLambda-6a5476746e5233425939-build.zip"
         }
       }
     },

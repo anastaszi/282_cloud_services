@@ -1,0 +1,9 @@
+{
+  "body": "eyJ0ZXN0IjoiYm9keSJ9",
+  "resource": "/users",
+  "path": "/users",
+  "httpMethod": "GET",
+  "isBase64Encoded": true,
+  "headers": {
+    "Authorization": "Bearer yJraWQiOiJEUUZsNnlWd0F6amdmTE1iVkFzUWhTVmxxb3ZoQXh5ZkhPUDc1a1NReFNrIiwiYWxnIjoiUlMyNTYifQ.eyJ2ZXIiOjEsImp0aSI6IkFULklPX2hDN3UyLURPUVZ2VkFUWFRwRWg5a19ieVVDc0ZMcmpEZWFNeVAzSHciLCJpc3MiOiJodHRwczovL2Rldi0zNDczNDA1Lm9rdGEuY29tL29hdXRoMi9kZWZhdWx0IiwiYXVkIjoiYXBpOi8vZGVmYXVsdCIsImlhdCI6MTYyMDY5NTk1MiwiZXhwIjoxNjIwNjk5NTUyLCJjaWQiOiIwb2FrcHhjMHpJMDVvelZGWTVkNiIsInVpZCI6IjAwdWtwdmduOWFDZFJ0V2dZNWQ2Iiwic2NwIjpbIm9wZW5pZCIsImVtYWlsIiwicHJvZmlsZSJdLCJzdWIiOiJ0ZXN0QG1vZHVsYXJjaGF0LmNvbSJ9.G2xQslKqpy5zhUYHLHGmpEgHvNFuohL4SdylHYri1BdSHU8dyWXkSn513Vgl1H4nNNJz6joOiaska_KyWN5oSrl6G0MtJF-O_Mx93wAoJPTN8GIghvVeeya1ULKhQDoOZZZj5mbrAun_I1KMrA8vvMa0rWBBrtxJZbm53syMYKUeiUsUoJDvQMNi_OWa5UbYQzO2bBT4DD_-kO-d1r9u-4cGnbZ9HIWhFvaThRYe1avV-27vOeInYPk_cmDnn6g9oVKkEEWNG6L4IT3xy_zEw8q1EfIYj71-_wk8usMBGoj0FQ3xobp0AtTx5OHMZbrXTwBH4QMAfx7S9k3r-VE7bg"  }
+}
