@@ -10,23 +10,53 @@
 [Custom claims for Okta](https://support.okta.com/help/s/article/How-to-add-custom-attributes-of-user-profile-as-claims-in-token?language=en_US)
 
 
-+ [ ] Discuss features and architecture
-+ [ ] Create AWS resources
-- [ ] Move SQL db to DynamoDB
-- [ ] Discuss API calls
-- [ ] Discuss third-party solution integration (Google maps?, FBbot)
+ [+] Discuss features and architecture
+ [+] Create AWS resources
+ [+] Move SQL db to DynamoDB
+ [+] Discuss API calls
+ [+] Discuss third-party solution integration (Google maps?, FBbot)
 
 ## Features
 
 ## Plan
 
 ## AWS tools
-- SNS (for messaging between users)
+
 
 
 ## Tools
 
 [Figma](https://www.figma.com/) - UX/UI design
+
+
+
+## UIWireFrames
+
+![](UIViews/ProfilePage.png)
+
+![](UIViews/VideoPage.png)
+
+![](UIViews/VideoCall.png)
+
+![](UIViews/Maps.png)
+
+![](UIViews/AdminOverview.png)
+
+![](UIViews/AdminHistory.png)
+
+![](UIViews/AdminSearch.png)
+
+## AWS Configurations
+
+![](UIViews/Amplify.png)
+
+![](UIViews/Gateway.png)
+
+![](UIViews/Lambda.png)
+
+![](UIViews/Dynamodb.png)
+
+![](UIViews/CloudWatch.png)
 
 
 ## Do git the right way
