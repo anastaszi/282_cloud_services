@@ -14,6 +14,8 @@ import { ChatsPage } from './pages/chats';
 import { MessagesPage } from './pages/messages';
 import { TopNavComponent } from './components/top-navigation';
 import { LoginPage } from './pages/login';
+import { Maps, MapsPage } from './pages/maps';
+import { VideoChat, VideoPage } from './pages/videoChat';
 import './App.css';
 import { oktaAuthConfig, oktaSignInConfig } from './config';
 
@@ -56,6 +58,12 @@ const AppWithRouterAccess = () => {
                 </SecureRoute>
                 <SecureRoute path="/messages">
                   <MessagesPage />
+                </SecureRoute>
+                <SecureRoute path="/maps">
+                  <MapsPage />
+                </SecureRoute>
+                <SecureRoute path="/videoChat">
+                  <VideoPage />
                 </SecureRoute>
                 <SecureRoute path="/" exact={true}>
                   <DashboardPage />
