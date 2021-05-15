@@ -11,7 +11,7 @@ Test it:
 * Employees:
   * gro.acton@modularchat.com [1qa2ws3eD]
   * mabhin.anandan@modularchat.com [1qa2ws3eD]
-    
+
 ## Features
 
 - Create video meeting
@@ -51,7 +51,15 @@ Additional to such verification for the admin manipulations Okta verifies user g
 
 ## Extra Tools
 
+## Other Tools
+
 [Figma](https://www.figma.com/file/KocCuSXhC0QO1FjfDSotkc/Untitled?node-id=0%3A1) - UX/UI design
+
+## Integration:
+* [Google Maps](https://developers.google.com/maps) - To pin the location
+* [Jitsi Meet](https://meet.jit.si/) - For video conference
+
+
 
 
 ## UIWireFrames
@@ -89,7 +97,7 @@ Video Conference Page:
 ## Set Ups
 
 1. Download csv with the raw data from sample db (> 5K records) [link](https://github.com/datacharmer/test_db)
-2. Apply updated to the data (we created a dummy email for each record [_firstName_._lastName_@modularchat.com]3. 
+2. Apply updated to the data (we created a dummy email for each record [_firstName_._lastName_@modularchat.com]3.
 3. Initiate Amplify project (in the concole and pull it to the local machine)
    ```
    amplify pull --appId [uniqueProjectId] --envName staging
@@ -105,7 +113,7 @@ Video Conference Page:
    [CloufFormationTemplate](CSVToDynamo.template)
 5. (Optional) Update each row with extra info (we added maxNumber of people allowed for the meeting hosted by the specific employee)\
    [CloudFormationTemplate](UpdateEachRow.template)
-6. Create new SPA Application in Okta and 
+6. Create new SPA Application in Okta and
 7. Import cvs with userIds, emails, names into Okta
 8. Create a rule in Okta that will automatically assign newly imported users to the application
 9. Create custom Claim for Okta default server that will allow sent more information with the IDToken (like employeeId, employeeGrouo)\
