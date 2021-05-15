@@ -45,22 +45,22 @@ Additional to such verification for the admin manipulations Okta verifies user g
 
 * Amplify
 * Lambda
-* RDS
+* DynamoDB
 * Gateway
 * CloudWatch
 
-## Extra Tools
-
 ## Other Tools
 
-[Figma](https://www.figma.com/file/KocCuSXhC0QO1FjfDSotkc/Untitled?node-id=0%3A1) - UX/UI design
+[Figma](https://www.figma.com/file/KocCuSXhC0QO1FjfDSotkc/Untitled?node-id=0%3A1) - UX/UI design \
+[Postman](https://www.postman.com/) - API testing
 
 ## Integration:
 * [Google Maps](https://developers.google.com/maps) - To pin the location
 * [Jitsi Meet](https://meet.jit.si/) - For video conference
 
+## Architecture Diagram
 
-
+![](UIViews/Architecture.png)
 
 ## UIWireFrames
 Profile Page
@@ -118,6 +118,28 @@ Video Conference Page:
 8. Create a rule in Okta that will automatically assign newly imported users to the application
 9. Create custom Claim for Okta default server that will allow sent more information with the IDToken (like employeeId, employeeGrouo)\
    Go to Security->API->Edit Authorization Server
+
+## Testing
+
+We tested our API calls using Postman
+
+### Admin calls:
+Example: Get all opened custom requests
+Authorized:
+![](UIViews/Admin.png)
+
+Authorized but not an Admin
+![](UIViews/AdminNotAdmin.png)
+
+Unauthorized
+![](UIViews/CloudWatch.png)
+
+### UserInfo calls
+Authorized:
+![](UIViews/RegularAuthorized.png)
+
+Unauthorized:
+![](UIViews/RegularUnauthorized.png)
 
 ## References
 
